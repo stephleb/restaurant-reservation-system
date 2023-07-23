@@ -1,13 +1,19 @@
+/** @format */
+
 import React from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
+
+//import components
 import Dashboard from "../dashboard/Dashboard";
+import ReservationCreate from "../reservations/ReservationCreate";
+import ReservationSeat from "../reservations/ReservationSeat";
+import ReservationSearch from "../reservations/ReservationSearch";
+import ReservationEdit from "../reservations/ReservationEdit";
+import TableCreate from "../tables/TableCreate";
 import NotFound from "./NotFound";
+
+//import utility functions
 import { today } from "../utils/date-time";
-import ReservationForm from "../dashboard/ReservationForm";
-import TablesForm from "../dashboard/TablesForm";
-import SeatReservation from "../dashboard/SeatReservation";
-import EditReservation from "../dashboard/EditReservation";
-import SearchReservation from "../dashboard/SearchReservations";
 
 /**
  * Defines all the routes for the application.
@@ -17,37 +23,41 @@ import SearchReservation from "../dashboard/SearchReservations";
  * @returns {JSX.Element}
  */
 function Routes() {
-  return (
-    <Switch>
-      <Route exact={true} path="/">
-        <Redirect to={"/dashboard"} />
-      </Route>
-      <Route exact={true} path="/reservations">
-        <Redirect to={"/dashboard"} />
-      </Route>
-      <Route path="/dashboard">
-        <Dashboard currentDate={today()} />
-      </Route>
-      <Route exact={true} path="/reservations/new">
-        <ReservationForm />
-      </Route>
-      <Route exact={true} path="/tables/new">
-        <TablesForm />
-      </Route>
-      <Route exact={true} path="/reservations/:reservation_id/seat">
-        <SeatReservation />
-      </Route>
-      <Route exact={true} path="/reservations/:reservation_id/edit">
-        <EditReservation />
-      </Route>
-      <Route exact={true} path="/search">
-        <SearchReservation />
-      </Route>
-      <Route>
-        <NotFound />
-      </Route>
-    </Switch>
-  );
+	return (
+		<Switch>
+			<Route
+				exact={true}
+				path="/">
+				<Redirect to={"/dashboard"} />
+			</Route>
+			<Route
+				exact={true}
+				path="/reservations">
+				<Redirect to={"/dashboard"} />
+			</Route>
+			<Route path="/dashboard">
+				<Dashboard date={today()} />
+			</Route>
+			<Route path="/reservations/new">
+				<ReservationCreate />
+			</Route>
+			<Route path="/reservations/:reservation_id/edit">
+				<ReservationEdit />
+			</Route>
+			<Route path="/reservations/:reservation_id/seat">
+				<ReservationSeat />
+			</Route>
+			<Route path="/tables/new">
+				<TableCreate />
+			</Route>
+			<Route path="/search">
+				<ReservationSearch />
+			</Route>
+			<Route>
+				<NotFound />
+			</Route>
+		</Switch>
+	);
 }
 
 export default Routes;
