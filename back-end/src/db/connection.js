@@ -1,9 +1,9 @@
 const environment = process.env.NODE_ENV || "development";
 const config = require("../../knexfile")[environment];
-if (typeof TextEncoder === "undefined") {
-  const { TextEncoder } = require("text-encoding");
-  global.TextEncoder = TextEncoder;
-}
+// if (typeof TextEncoder === "undefined") {
+//   const { TextEncoder } = require("text-encoding");
+//   global.TextEncoder = TextEncoder;
+// }
 const knex = require("knex")(config);
 
 // Add a cleanup function to close the connection
