@@ -1,4 +1,3 @@
-/** @format */
 
 const reservations = require("./00-reservations.json");
 

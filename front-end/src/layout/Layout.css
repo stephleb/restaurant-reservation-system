@@ -1,9 +1,9 @@
 *{
-  font-family: 'IBM Plex Sans', sans-serif;
+  font-family: 'comic Sans', sans-serif;
 }
 
 .side-bar {
-  background-color: rgb(121, 110, 151);
+  background-color: rgb(232, 104, 144);
   min-width: 200px;
   flex-wrap: wrap;
   

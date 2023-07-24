@@ -1,5 +1,3 @@
-/** @format */
-
 //import error components
 const asyncErrorBoundary = require("../errors/asyncErrorBoundary");
 const hasProperties = require("../errors/hasProperties");

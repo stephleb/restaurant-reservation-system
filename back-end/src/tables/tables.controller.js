@@ -1,5 +1,3 @@
-/** @format */
-
 //import error components
 const asyncErrorBoundary = require("../errors/asyncErrorBoundary");
 const hasProperties = require("../errors/hasProperties");
@@ -9,8 +7,6 @@ const service = require("./tables.service");
 const reservationsService = require("../reservations/reservations.service");
 
 //Validation functions
-
-//validate that table exists
 
 async function tableExists(req, res, next) {
 	const table = await service.read(req.params.table_id);
@@ -25,7 +21,7 @@ async function tableExists(req, res, next) {
 	});
 }
 
-//validate that reservation exists
+
 
 async function reservationExists(req, res, next) {
 	const { reservation_id } = req.body.data;
@@ -41,7 +37,6 @@ async function reservationExists(req, res, next) {
 	});
 }
 
-//validate that request body has data property
 
 function hasData(req, res, next) {
 	if (req.body.data) {
@@ -50,7 +45,6 @@ function hasData(req, res, next) {
 	next({ status: 400, message: "Body must have data property" });
 }
 
-//validate that request has reservation_id property
 
 function hasReservationId(req, res, next) {
 	const { data } = req.body;
@@ -64,12 +58,9 @@ function hasReservationId(req, res, next) {
 	next();
 }
 
-//validate that body has required properties
-
 const requiredProperties = ["table_name", "capacity"];
 const hasRequiredProperties = hasProperties(requiredProperties);
 
-//validate that table name is at least 2 characters long
 
 function tableNameIsValid(req, res, next) {
 	const tableName = req.body.data.table_name;
@@ -120,7 +111,6 @@ function tableCanFitAllPeople(req, res, next) {
 	next();
 }
 
-//validate that table is occupied
 
 function tableIsOccupied(req, res, next) {
 	const table = res.locals.table;
@@ -135,7 +125,6 @@ function tableIsOccupied(req, res, next) {
 	next();
 }
 
-//validate that table is not occupied
 
 function tableIsUnoccupied(req, res, next) {
 	const table = res.locals.table;
@@ -148,8 +137,6 @@ function tableIsUnoccupied(req, res, next) {
 	}
 	next();
 }
-
-//validate that reservation is not already seated
 
 function isSeated(req, res, next) {
 	const { status } = res.locals.reservation;

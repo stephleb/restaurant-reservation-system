@@ -1,10 +1,3 @@
-/**
- * Defines the router for reservation resources.
- *
- * @format
- * @type {Router}
- */
-
 const router = require("express").Router({ mergeParams: true });
 const controller = require("./reservations.controller");
 const methodNotAllowed = require("../errors/methodNotAllowed");
